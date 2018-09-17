@@ -2,7 +2,7 @@
 
 set -eux
 
-REPO_NAME=${1:-terraform-module}
+REPO_NAME=${1:-terraform-provider-name}
 
 git clone --depth 1 https://github.com/tmknom/terraform-standard-module-structure.git ${REPO_NAME}
 

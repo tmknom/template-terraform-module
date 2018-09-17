@@ -8,7 +8,7 @@ Terraform module template following [Standard Module Structure](https://www.terr
 
 ```sh
 curl -fsSL https://raw.githubusercontent.com/tmknom/terraform-standard-module-structure/master/install | sh -s
-cd terraform-module
+cd terraform-provider-name
 ```
 
 ### Specify module name
