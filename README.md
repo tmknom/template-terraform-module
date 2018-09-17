@@ -2,6 +2,24 @@
 
 Terraform module template following [Standard Module Structure](https://www.terraform.io/docs/modules/create.html#standard-module-structure).
 
+## Installation
+
+### Default
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/tmknom/terraform-standard-module-structure/master/install | sh -s
+cd terraform-module
+```
+
+### Specify module name
+
+Named `terraform-<PROVIDER>-<NAME>`. Module repositories must use this three-part name format.
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/tmknom/terraform-standard-module-structure/master/install | sh -s terraform-aws-sample
+cd terraform-aws-sample
+```
+
 ## References
 
 - [Terraform Registry - Publishing Modules](https://www.terraform.io/docs/registry/modules/publish.html)
