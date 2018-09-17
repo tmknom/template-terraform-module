@@ -1,0 +1,1 @@
+# terraform-standard-module-structure
