@@ -1,0 +1,18 @@
+#!/bin/sh
+
+set -eux
+
+REPO_NAME=${1:-terraform-module}
+
+git clone --depth 1 https://github.com/tmknom/terraform-standard-module-structure.git ${REPO_NAME}
+
+cd ${REPO_NAME}
+rm -rf install.sh .git
+
+git init
+git add .
+git commit -m "Initial commit"
+
+set +x
+echo "\n  Install success!"
+echo "\nNext step: cd ${REPO_NAME}"
