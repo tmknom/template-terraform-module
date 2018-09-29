@@ -13,6 +13,9 @@ endef
 lint-shellscript:
 	$(call list_shellscript) | xargs -I {} docker run --rm -v "$(CURDIR):/mnt" koalaman/shellcheck {}
 
+lint-markdown:
+	docker run --rm -i -v "$(CURDIR):/work" tmknom/markdownlint
+
 
 # https://postd.cc/auto-documented-makefile/
 help: ## Show help
