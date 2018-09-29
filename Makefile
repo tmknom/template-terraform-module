@@ -21,7 +21,10 @@ lint-markdown:
 lint-yaml:
 	docker run --rm -v "$(CURDIR):/work" tmknom/yamllint --strict .
 
-format: format-shellscript format-markdown ## Format code
+format: format-terraform format-shellscript format-markdown ## Format code
+
+format-terraform:
+	terraform fmt
 
 format-shellscript:
 	$(call list_shellscript) | xargs -I {} docker run --rm -v "$(CURDIR):/work" -w /work tmknom/shfmt -i 2 -ci -kp -w {}
