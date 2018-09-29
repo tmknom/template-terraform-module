@@ -21,6 +21,14 @@ lint-markdown:
 lint-yaml:
 	docker run --rm -v "$(CURDIR):/work" tmknom/yamllint --strict .
 
+format: format-shellscript format-markdown ## Format code
+
+format-shellscript:
+	$(call list_shellscript) | xargs -I {} docker run --rm -v "$(CURDIR):/work" -w /work tmknom/shfmt -i 2 -ci -kp -w {}
+
+format-markdown:
+	docker run --rm -v "$(CURDIR):/work" tmknom/prettier --parser=markdown --write '**/*.md'
+
 
 # https://postd.cc/auto-documented-makefile/
 help: ## Show help
