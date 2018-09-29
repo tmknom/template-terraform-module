@@ -16,6 +16,9 @@ lint-shellscript:
 lint-markdown:
 	docker run --rm -i -v "$(CURDIR):/work" tmknom/markdownlint
 
+lint-yaml:
+	docker run --rm -v "$(CURDIR):/work" tmknom/yamllint --strict .
+
 
 # https://postd.cc/auto-documented-makefile/
 help: ## Show help
