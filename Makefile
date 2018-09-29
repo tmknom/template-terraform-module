@@ -10,7 +10,7 @@ endef
 
 # Phony Targets
 
-lint: lint-shellscript lint-markdown lint-yaml ## Lint code
+lint: lint-terraform lint-shellscript lint-markdown lint-yaml ## Lint code
 
 lint-terraform:
 	docker run --rm -v "$(CURDIR):/data" wata727/tflint
