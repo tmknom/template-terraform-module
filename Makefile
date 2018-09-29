@@ -12,6 +12,9 @@ endef
 
 lint: lint-shellscript lint-markdown lint-yaml ## Lint code
 
+lint-terraform:
+	docker run --rm -v "$(CURDIR):/data" wata727/tflint
+
 lint-shellscript:
 	$(call list_shellscript) | xargs -I {} docker run --rm -v "$(CURDIR):/mnt" koalaman/shellcheck {}
 
