@@ -40,6 +40,9 @@ format-shellscript:
 format-markdown:
 	docker run --rm -v "$(CURDIR):/work" tmknom/prettier --parser=markdown --write '**/*.md'
 
+docs: ## Generate docs
+	docker run --rm -v "$(CURDIR):/work" tmknom/terraform-docs
+
 
 # https://postd.cc/auto-documented-makefile/
 help: ## Show help
