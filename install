@@ -4,15 +4,15 @@ set -eux
 
 REPO_NAME=${1:-terraform-provider-name}
 
-git clone --depth 1 https://github.com/tmknom/terraform-standard-module-structure.git ${REPO_NAME}
+git clone --depth 1 https://github.com/tmknom/template-terraform-module.git "${REPO_NAME}"
 
-cd ${REPO_NAME}
-rm -rf install.sh .git
+cd "${REPO_NAME}"
+rm -rf install .git
 
 git init
 git add .
 git commit -m "Initial commit"
 
 set +x
-echo "\n  Install success!"
-echo "\nNext step: cd ${REPO_NAME}"
+printf "\n  Install success!"
+printf "\nNext step: cd %s\n" "${REPO_NAME}"
