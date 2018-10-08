@@ -7,7 +7,7 @@ Terraform module template following [Standard Module Structure](https://www.terr
 ### Default
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/tmknom/terraform-standard-module-structure/master/install | sh -s
+curl -fsSL https://raw.githubusercontent.com/tmknom/template-terraform-module/master/install | sh -s
 cd terraform-provider-name
 ```
 
@@ -16,7 +16,7 @@ cd terraform-provider-name
 Named `terraform-<PROVIDER>-<NAME>`. Module repositories must use this three-part name format.
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/tmknom/terraform-standard-module-structure/master/install | sh -s terraform-aws-sample
+curl -fsSL https://raw.githubusercontent.com/tmknom/template-terraform-module/master/install | sh -s terraform-aws-sample
 cd terraform-aws-sample
 ```
 
