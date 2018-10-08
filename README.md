@@ -33,7 +33,6 @@ Write your Terraform module usage.
 
 Write your Terraform module examples.
 
-
 ## Inputs
 
 Write your Terraform module inputs.
