@@ -9,6 +9,10 @@ define list_shellscript
 endef
 
 # Phony Targets
+install: ## Install requirements
+	@type docker >/dev/null 2>&1 || (echo "ERROR: docker not found (brew install docker)"; exit 1)
+	@type tfenv >/dev/null 2>&1 || (echo "ERROR: tfenv not found (brew install tfenv)"; exit 1)
+	tfenv install
 
 lint: lint-terraform lint-shellscript lint-markdown lint-yaml ## Lint code
 
