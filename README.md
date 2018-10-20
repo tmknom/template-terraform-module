@@ -31,7 +31,8 @@ Write your Terraform module usage.
 
 ## Examples
 
-Write your Terraform module examples.
+- [Minimal](https://github.com/tmknom/template-terraform-module/tree/master/examples/minimal)
+- [Complete](https://github.com/tmknom/template-terraform-module/tree/master/examples/complete)
 
 ## Inputs
 
