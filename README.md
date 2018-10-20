@@ -20,11 +20,6 @@ curl -fsSL https://raw.githubusercontent.com/tmknom/template-terraform-module/ma
 cd terraform-aws-sample
 ```
 
-## References
-
-- [Terraform Registry - Publishing Modules](https://www.terraform.io/docs/registry/modules/publish.html)
-- [Standard Module Structure](https://www.terraform.io/docs/modules/create.html#standard-module-structure)
-
 ## Usage
 
 Write your Terraform module usage.
