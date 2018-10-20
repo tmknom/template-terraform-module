@@ -12,6 +12,13 @@ define list_shellscript
 	grep '^#!' -rn . | grep ':1:#!' | cut -d: -f1 | grep -v .git
 endef
 
+define check_requirement
+	if ! type ${1} >/dev/null 2>&1; then \
+		printf "\nNot found %s, run command\n\n" ${1}; \
+		printf "    \033[36mbrew install %s\033[0m\n" ${1}; \
+	fi
+endef
+
 define check_environment_variable
 	key="\$$${1}" && \
 	value=$$(eval "echo $${key}") && \
@@ -22,6 +29,9 @@ define check_environment_variable
 endef
 
 # Phony Targets
+check-requirements:
+	@$(call check_requirement,docker)
+
 check-env:
 	@for val in ${ENVIRONMENT_VARIABLES}; do \
 		$(call check_environment_variable,$${val}); \
