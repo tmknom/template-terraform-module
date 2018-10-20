@@ -14,6 +14,8 @@ FORMATTER_IMAGES := tmknom/shfmt tmknom/prettier
 TERRAFORM_IMAGES := ${TERRAFORM_IMAGE} wata727/tflint tmknom/terraform-docs tmknom/terraform-landscape
 DOCKER_IMAGES := ${LINTER_IMAGES} ${FORMATTER_IMAGES} ${TERRAFORM_IMAGES}
 
+MINIMAL_DIR := ./examples/minimal
+
 # Macro definitions
 define list_shellscript
 	grep '^#!' -rn . | grep ':1:#!' | cut -d: -f1 | grep -v .git
@@ -91,6 +93,16 @@ format-markdown:
 
 docs: ## Generate docs
 	docker run --rm -v "$(CURDIR):/work" tmknom/terraform-docs
+
+terraform-plan-minimal: ## Run terraform plan examples/minimal
+	$(call terraform,init,${MINIMAL_DIR})
+	$(call terraform,plan,${MINIMAL_DIR}) | tee -a /dev/stderr | docker run --rm -i tmknom/terraform-landscape
+
+terraform-apply-minimal: ## Run terraform apply examples/minimal
+	$(call terraform,apply,${MINIMAL_DIR})
+
+terraform-destroy-minimal: ## Run terraform destroy examples/minimal
+	$(call terraform,destroy,${MINIMAL_DIR})
 
 
 # https://postd.cc/auto-documented-makefile/
