@@ -19,6 +19,14 @@ define list_shellscript
 	grep '^#!' -rn . | grep ':1:#!' | cut -d: -f1 | grep -v .git
 endef
 
+define terraform
+	docker run --rm -i -v "$$PWD:/work" -w /work \
+	-e AWS_ACCESS_KEY_ID=$$AWS_ACCESS_KEY_ID \
+	-e AWS_SECRET_ACCESS_KEY=$$AWS_SECRET_ACCESS_KEY \
+	-e AWS_DEFAULT_REGION=$$AWS_DEFAULT_REGION \
+	${TERRAFORM_IMAGE} $1 $2
+endef
+
 define check_requirement
 	if ! type ${1} >/dev/null 2>&1; then \
 		printf "\nNot found %s, run command\n\n" ${1}; \
