@@ -15,6 +15,7 @@ TERRAFORM_IMAGES := ${TERRAFORM_IMAGE} wata727/tflint tmknom/terraform-docs tmkn
 DOCKER_IMAGES := ${LINTER_IMAGES} ${FORMATTER_IMAGES} ${TERRAFORM_IMAGES}
 
 MINIMAL_DIR := ./examples/minimal
+COMPLETE_DIR := ./examples/complete
 
 # Macro definitions
 define list_shellscript
@@ -103,6 +104,16 @@ terraform-apply-minimal: ## Run terraform apply examples/minimal
 
 terraform-destroy-minimal: ## Run terraform destroy examples/minimal
 	$(call terraform,destroy,${MINIMAL_DIR})
+
+terraform-plan-complete: ## Run terraform plan examples/complete
+	$(call terraform,init,${COMPLETE_DIR})
+	$(call terraform,plan,${COMPLETE_DIR}) | tee -a /dev/stderr | docker run --rm -i tmknom/terraform-landscape
+
+terraform-apply-complete: ## Run terraform apply examples/complete
+	$(call terraform,apply,${COMPLETE_DIR})
+
+terraform-destroy-complete: ## Run terraform destroy examples/complete
+	$(call terraform,destroy,${COMPLETE_DIR})
 
 
 # https://postd.cc/auto-documented-makefile/
