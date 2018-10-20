@@ -36,6 +36,8 @@ define check_environment_variable
 endef
 
 # Phony Targets
+install: check-requirements install-images check-env ## Install requirements
+
 install-images:
 	@for image in ${DOCKER_IMAGES}; do \
 		echo "docker pull $${image}" && docker pull $${image}; \
