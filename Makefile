@@ -5,7 +5,14 @@
 
 
 # Constant definitions
+TERRAFORM_VERSION := 0.11.9
+TERRAFORM_IMAGE := hashicorp/terraform:${TERRAFORM_VERSION}
 ENVIRONMENT_VARIABLES := AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_DEFAULT_REGION
+
+LINTER_IMAGES := koalaman/shellcheck tmknom/markdownlint tmknom/yamllint
+FORMATTER_IMAGES := tmknom/shfmt tmknom/prettier
+TERRAFORM_IMAGES := ${TERRAFORM_IMAGE} wata727/tflint tmknom/terraform-docs tmknom/terraform-landscape
+DOCKER_IMAGES := ${LINTER_IMAGES} ${FORMATTER_IMAGES} ${TERRAFORM_IMAGES}
 
 # Macro definitions
 define list_shellscript
@@ -29,6 +36,11 @@ define check_environment_variable
 endef
 
 # Phony Targets
+install-images:
+	@for image in ${DOCKER_IMAGES}; do \
+		echo "docker pull $${image}" && docker pull $${image}; \
+	done
+
 check-requirements:
 	@$(call check_requirement,docker)
 
