@@ -3,12 +3,29 @@
 # https://gist.github.com/tadashi-aikawa/da73d277a3c1ec6767ed48d1335900f3
 .PHONY: $(shell grep -E '^[a-zA-Z_-]+:' $(MAKEFILE_LIST) | sed 's/://')
 
+
+# Constant definitions
+ENVIRONMENT_VARIABLES := AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_DEFAULT_REGION
+
 # Macro definitions
 define list_shellscript
 	grep '^#!' -rn . | grep ':1:#!' | cut -d: -f1 | grep -v .git
 endef
 
+define check_environment_variable
+	key="\$$${1}" && \
+	value=$$(eval "echo $${key}") && \
+	if [ -z "$${value}" ]; then \
+		printf "\n%s is unset, run command\n\n" $${key}; \
+		printf "    \033[36mexport %s=<value>\033[0m\n" ${1}; \
+	fi
+endef
+
 # Phony Targets
+check-env:
+	@for val in ${ENVIRONMENT_VARIABLES}; do \
+		$(call check_environment_variable,$${val}); \
+	done
 
 lint: lint-terraform lint-shellscript lint-markdown lint-yaml ## Lint code
 
