@@ -14,9 +14,20 @@ FORMATTER_IMAGES := tmknom/shfmt tmknom/prettier
 TERRAFORM_IMAGES := ${TERRAFORM_IMAGE} wata727/tflint tmknom/terraform-docs tmknom/terraform-landscape
 DOCKER_IMAGES := ${LINTER_IMAGES} ${FORMATTER_IMAGES} ${TERRAFORM_IMAGES}
 
+MINIMAL_DIR := ./examples/minimal
+COMPLETE_DIR := ./examples/complete
+
 # Macro definitions
 define list_shellscript
 	grep '^#!' -rn . | grep ':1:#!' | cut -d: -f1 | grep -v .git
+endef
+
+define terraform
+	docker run --rm -i -v "$$PWD:/work" -w /work \
+	-e AWS_ACCESS_KEY_ID=$$AWS_ACCESS_KEY_ID \
+	-e AWS_SECRET_ACCESS_KEY=$$AWS_SECRET_ACCESS_KEY \
+	-e AWS_DEFAULT_REGION=$$AWS_DEFAULT_REGION \
+	${TERRAFORM_IMAGE} $1 $2
 endef
 
 define check_requirement
@@ -83,6 +94,26 @@ format-markdown:
 
 docs: ## Generate docs
 	docker run --rm -v "$(CURDIR):/work" tmknom/terraform-docs
+
+terraform-plan-minimal: ## Run terraform plan examples/minimal
+	$(call terraform,init,${MINIMAL_DIR})
+	$(call terraform,plan,${MINIMAL_DIR}) | tee -a /dev/stderr | docker run --rm -i tmknom/terraform-landscape
+
+terraform-apply-minimal: ## Run terraform apply examples/minimal
+	$(call terraform,apply,${MINIMAL_DIR})
+
+terraform-destroy-minimal: ## Run terraform destroy examples/minimal
+	$(call terraform,destroy,${MINIMAL_DIR})
+
+terraform-plan-complete: ## Run terraform plan examples/complete
+	$(call terraform,init,${COMPLETE_DIR})
+	$(call terraform,plan,${COMPLETE_DIR}) | tee -a /dev/stderr | docker run --rm -i tmknom/terraform-landscape
+
+terraform-apply-complete: ## Run terraform apply examples/complete
+	$(call terraform,apply,${COMPLETE_DIR})
+
+terraform-destroy-complete: ## Run terraform destroy examples/complete
+	$(call terraform,destroy,${COMPLETE_DIR})
 
 
 # https://postd.cc/auto-documented-makefile/
