@@ -23,11 +23,14 @@ define list_shellscript
 endef
 
 define terraform
+	run_dir="${1}" && \
+	sub_command="${2}" && \
+	cd $${run_dir} && \
 	docker run --rm -i -v "$$PWD:/work" -w /work \
 	-e AWS_ACCESS_KEY_ID=$$AWS_ACCESS_KEY_ID \
 	-e AWS_SECRET_ACCESS_KEY=$$AWS_SECRET_ACCESS_KEY \
 	-e AWS_DEFAULT_REGION=$$AWS_DEFAULT_REGION \
-	${TERRAFORM_IMAGE} $1 $2
+	${TERRAFORM_IMAGE} $${sub_command}
 endef
 
 define check_requirement
@@ -96,24 +99,24 @@ docs: ## Generate docs
 	docker run --rm -v "$(CURDIR):/work" tmknom/terraform-docs
 
 terraform-plan-minimal: ## Run terraform plan examples/minimal
-	$(call terraform,init,${MINIMAL_DIR})
-	$(call terraform,plan,${MINIMAL_DIR}) | tee -a /dev/stderr | docker run --rm -i tmknom/terraform-landscape
+	$(call terraform,${MINIMAL_DIR},init)
+	$(call terraform,${MINIMAL_DIR},plan) | tee -a /dev/stderr | docker run --rm -i tmknom/terraform-landscape
 
 terraform-apply-minimal: ## Run terraform apply examples/minimal
-	$(call terraform,apply,${MINIMAL_DIR})
+	$(call terraform,${MINIMAL_DIR},apply)
 
 terraform-destroy-minimal: ## Run terraform destroy examples/minimal
-	$(call terraform,destroy,${MINIMAL_DIR})
+	$(call terraform,${MINIMAL_DIR},destroy)
 
 terraform-plan-complete: ## Run terraform plan examples/complete
-	$(call terraform,init,${COMPLETE_DIR})
-	$(call terraform,plan,${COMPLETE_DIR}) | tee -a /dev/stderr | docker run --rm -i tmknom/terraform-landscape
+	$(call terraform,${COMPLETE_DIR},init)
+	$(call terraform,${COMPLETE_DIR},plan) | tee -a /dev/stderr | docker run --rm -i tmknom/terraform-landscape
 
 terraform-apply-complete: ## Run terraform apply examples/complete
-	$(call terraform,apply,${COMPLETE_DIR})
+	$(call terraform,${COMPLETE_DIR},apply)
 
 terraform-destroy-complete: ## Run terraform destroy examples/complete
-	$(call terraform,destroy,${COMPLETE_DIR})
+	$(call terraform,${COMPLETE_DIR},destroy)
 
 
 # https://postd.cc/auto-documented-makefile/
