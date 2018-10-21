@@ -77,6 +77,8 @@ lint-terraform:
 	find . -type f -name '*.tf' -path "./examples/*" -not -path "**/.terraform/*" -exec dirname {} \; | sort -u | \
 	xargs -I {} sh -c 'cd {} && echo {} && terraform init && terraform validate'
 
+validate-terraform: validate-terraform-module validate-terraform-examples
+
 validate-terraform-module:
 	$(call terraform,$(CURDIR),validate,-check-variables=false)
 
