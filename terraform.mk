@@ -1,3 +1,8 @@
+# Usage - Define TERRAFORM_VERSION, and include this file as below.
+#
+# TERRAFORM_VERSION := latest
+# include terraform.mk
+
 .DEFAULT_GOAL := help
 
 # https://gist.github.com/tadashi-aikawa/da73d277a3c1ec6767ed48d1335900f3
