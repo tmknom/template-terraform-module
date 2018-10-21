@@ -14,6 +14,7 @@ git clone --depth 1 https://github.com/tmknom/template-terraform-module.git "${R
 
 cd "${REPO_NAME}"
 rm -rf install .git
+sed -i "" -e "s/template-terraform-module/${REPO_NAME}/g" README.md
 
 git init
 git add .
