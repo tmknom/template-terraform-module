@@ -24,4 +24,4 @@ git commit -m "Initial commit" -m "Based on https://github.com/tmknom/template-t
 
 set +x
 printf "\n  Install success!"
-printf "\nNext step: cd %s\n" "${REPO_NAME}"
+printf "\nNext step: \033[36mcd %s\033[0m\n" "${REPO_NAME}"
