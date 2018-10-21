@@ -1,12 +1,9 @@
-include terraform.mk
-
-# Constant definitions
 TERRAFORM_VERSION := 0.11.9
+include terraform.mk
 
 MINIMAL_DIR := ./examples/minimal
 COMPLETE_DIR := ./examples/complete
 
-# Phony Targets
 terraform-plan-minimal: ## Run terraform plan examples/minimal
 	$(call terraform,${MINIMAL_DIR},init)
 	$(call terraform,${MINIMAL_DIR},plan) | tee -a /dev/stderr | docker run --rm -i tmknom/terraform-landscape
