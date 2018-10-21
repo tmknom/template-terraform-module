@@ -71,11 +71,6 @@ lint: lint-terraform lint-shellscript lint-markdown lint-yaml ## Lint code
 
 lint-terraform:
 	docker run --rm -v "$(CURDIR):/data" wata727/tflint
-	# validate modules without variables
-	terraform validate -check-variables=false
-	# validate examples
-	find . -type f -name '*.tf' -path "./examples/*" -not -path "**/.terraform/*" -exec dirname {} \; | sort -u | \
-	xargs -I {} sh -c 'cd {} && echo {} && terraform init && terraform validate'
 
 validate-terraform: validate-terraform-module validate-terraform-examples
 
