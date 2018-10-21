@@ -1,5 +1,5 @@
 TERRAFORM_VERSION := 0.11.9
-include terraform.mk
+-include terraform.mk
 
 MINIMAL_DIR := ./examples/minimal
 COMPLETE_DIR := ./examples/complete
