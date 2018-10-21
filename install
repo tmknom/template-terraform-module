@@ -1,5 +1,11 @@
 #!/bin/sh
 
+if ! type git >/dev/null 2>&1; then
+  printf "\nNot found git, run command\n\n"
+  printf "    \033[36mbrew install git\033[0m\n"
+  exit 1
+fi
+
 set -eux
 
 REPO_NAME=${1:-terraform-provider-name}
