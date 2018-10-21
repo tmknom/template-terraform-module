@@ -18,7 +18,7 @@ sed -i "" -e "s/template-terraform-module/${REPO_NAME}/g" README.md
 
 git init
 git add .
-git commit -m "Initial commit"
+git commit -m "Initial commit" -m "Based on https://github.com/tmknom/template-terraform-module"
 
 set +x
 printf "\n  Install success!"
