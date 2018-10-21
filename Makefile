@@ -25,12 +25,13 @@ endef
 define terraform
 	run_dir="${1}" && \
 	sub_command="${2}" && \
+	option="${3}" && \
 	cd $${run_dir} && \
 	docker run --rm -i -v "$$PWD:/work" -w /work \
 	-e AWS_ACCESS_KEY_ID=$$AWS_ACCESS_KEY_ID \
 	-e AWS_SECRET_ACCESS_KEY=$$AWS_SECRET_ACCESS_KEY \
 	-e AWS_DEFAULT_REGION=$$AWS_DEFAULT_REGION \
-	${TERRAFORM_IMAGE} $${sub_command}
+	${TERRAFORM_IMAGE} $${sub_command} $${option}
 endef
 
 define check_requirement
