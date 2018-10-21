@@ -1,18 +1,27 @@
 #!/bin/sh
 
+if ! type git >/dev/null 2>&1; then
+  printf "\nNot found git, run command\n\n"
+  printf "    \033[36mbrew install git\033[0m\n"
+  exit 1
+fi
+
 set -eux
 
 REPO_NAME=${1:-terraform-provider-name}
-
 git clone --depth 1 https://github.com/tmknom/template-terraform-module.git "${REPO_NAME}"
 
 cd "${REPO_NAME}"
 rm -rf install .git
+sed -i "" -e "s/template-terraform-module/${REPO_NAME}/g" README.md
+
+# remove code without comment
+find . -type f -name '*.tf' -path "./*" -not -path "**/.terraform/*" | xargs -I {} sed -i "" -e "/^[^#]/d" -e "/^$/d" {}
 
 git init
 git add .
-git commit -m "Initial commit"
+git commit -m "Initial commit" -m "Based on https://github.com/tmknom/template-terraform-module"
 
 set +x
 printf "\n  Install success!"
-printf "\nNext step: cd %s\n" "${REPO_NAME}"
+printf "\nNext step: \033[36mcd %s\033[0m\n" "${REPO_NAME}"
