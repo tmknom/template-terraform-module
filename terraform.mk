@@ -106,6 +106,8 @@ format-markdown:
 docs: ## Generate docs
 	docker run --rm -v "$(CURDIR):/work" tmknom/terraform-docs
 
+upgrade: ## Upgrade makefile
+	curl -sSL https://raw.githubusercontent.com/tmknom/template-terraform-module/master/terraform.mk -o .terraform.mk
 
 # https://postd.cc/auto-documented-makefile/
 help: ## Show help
