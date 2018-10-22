@@ -43,6 +43,7 @@ export AWS_DEFAULT_REGION=ap-northeast-1
 ```shell
 git clone git@github.com:tmknom/template-terraform-module.git
 cd template-terraform-module
+make
 make install
 ```
 
