@@ -7,6 +7,7 @@ TERRAFORM_VERSION := 0.11.9
 
 MINIMAL_DIR := ./examples/minimal
 COMPLETE_DIR := ./examples/complete
+EXAMPLE_DIRS := ${MINIMAL_DIR} ${COMPLETE_DIR}
 
 terraform-plan-minimal: ## Run terraform plan examples/minimal
 	$(call terraform,${MINIMAL_DIR},init)

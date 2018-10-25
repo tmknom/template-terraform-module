@@ -17,8 +17,6 @@ FORMATTER_IMAGES := tmknom/shfmt tmknom/prettier
 TERRAFORM_IMAGES := ${TERRAFORM_IMAGE} wata727/tflint tmknom/terraform-docs tmknom/terraform-landscape
 DOCKER_IMAGES := ${LINTER_IMAGES} ${FORMATTER_IMAGES} ${TERRAFORM_IMAGES}
 
-EXAMPLE_DIRS := ${MINIMAL_DIR} ${COMPLETE_DIR}
-
 # Macro definitions
 define list_shellscript
 	grep '^#!' -rn . | grep ':1:#!' | cut -d: -f1 | grep -v .git
