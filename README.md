@@ -65,8 +65,8 @@ terraform-plan-minimal         Run terraform plan examples/minimal
 ### Releasing new versions
 
 ```shell
-git tag 1.X.X
-git push origin 1.X.X
+git tag v1.X.X
+git push origin v1.X.X
 ```
 
 ### Terraform Module Registry
