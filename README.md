@@ -62,6 +62,13 @@ terraform-plan-complete        Run terraform plan examples/complete
 terraform-plan-minimal         Run terraform plan examples/minimal
 ```
 
+### Releasing new versions
+
+```shell
+git tag 1.X.X
+git push origin 1.X.X
+```
+
 ## License
 
 Apache 2 Licensed. See LICENSE for full details.
