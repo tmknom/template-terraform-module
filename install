@@ -14,6 +14,9 @@ git clone --depth 1 https://github.com/tmknom/template-terraform-module.git "${R
 cd "${REPO_NAME}"
 rm -rf install .git
 mv terraform.mk .terraform.mk
+
+REGISTRY_PATH=$(echo "${REPO_NAME}" | awk -F- '{print substr($0, index($0, $3))"/"$2}')
+sed -i "" -e "s#name/provider#${REGISTRY_PATH}#g" README.md
 sed -i "" -e "s/template-terraform-module/${REPO_NAME}/g" README.md
 sed -i "" -e "s/include terraform.mk/include .terraform.mk/g" Makefile
 
