@@ -28,12 +28,11 @@ define terraform
 	run_dir="${1}" && \
 	sub_command="${2}" && \
 	option="${3}" && \
-	cd $${run_dir} && \
 	docker run --rm -i -v "$$PWD:/work" -w /work \
 	-e AWS_ACCESS_KEY_ID=$$AWS_ACCESS_KEY_ID \
 	-e AWS_SECRET_ACCESS_KEY=$$AWS_SECRET_ACCESS_KEY \
 	-e AWS_DEFAULT_REGION=$$AWS_DEFAULT_REGION \
-	${TERRAFORM_IMAGE} $${sub_command} $${option}
+	${TERRAFORM_IMAGE} $${sub_command} $${option} $${run_dir}
 endef
 
 define check_requirement
@@ -76,11 +75,11 @@ lint-terraform:
 validate-terraform: validate-terraform-module validate-terraform-examples
 
 validate-terraform-module:
-	$(call terraform,$(CURDIR),validate,-check-variables=false)
+	$(call terraform,.,validate,-check-variables=false)
 
 validate-terraform-examples:
 	@for dir in ${EXAMPLE_DIRS}; do \
-		pushd $${dir} && $(call terraform,.,init) && $(call terraform,.,validate) && popd; \
+		$(call terraform,$${dir},init) && $(call terraform,$${dir},validate); \
 	done
 
 lint-shellscript:
@@ -95,7 +94,7 @@ lint-yaml:
 format: format-terraform format-shellscript format-markdown ## Format code
 
 format-terraform:
-	$(call terraform,$(CURDIR),fmt)
+	$(call terraform,.,fmt)
 
 format-shellscript:
 	$(call list_shellscript) | xargs -I {} docker run --rm -v "$(CURDIR):/work" -w /work tmknom/shfmt -i 2 -ci -kp -w {}
