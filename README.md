@@ -53,6 +53,7 @@ make install
 ### Makefile targets
 
 ```text
+clean                          Clean .terraform
 docs                           Generate docs
 format                         Format code
 help                           Show help
