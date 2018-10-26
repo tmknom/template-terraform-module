@@ -1,5 +1,7 @@
 # template-terraform-module
 
+[![CircleCI](https://circleci.com/gh/tmknom/template-terraform-module.svg?style=svg)](https://circleci.com/gh/tmknom/template-terraform-module)
+
 Terraform module template following [Standard Module Structure](https://www.terraform.io/docs/modules/create.html#standard-module-structure).
 
 ## Usage
