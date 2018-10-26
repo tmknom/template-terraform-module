@@ -103,6 +103,9 @@ format-markdown:
 docs: ## Generate docs
 	docker run --rm -v "$(CURDIR):/work" tmknom/terraform-docs
 
+release: ## Release GitHub and Terraform Module Registry
+	version=$$(cat VERSION) && git tag "$${version}" && git push origin "$${version}"
+
 upgrade: ## Upgrade makefile
 	curl -sSL https://raw.githubusercontent.com/tmknom/template-terraform-module/master/terraform.mk -o .terraform.mk
 
