@@ -54,12 +54,14 @@ format                         Format code
 help                           Show help
 install                        Install requirements
 lint                           Lint code
+release                        Release GitHub and Terraform Module Registry
 terraform-apply-complete       Run terraform apply examples/complete
 terraform-apply-minimal        Run terraform apply examples/minimal
 terraform-destroy-complete     Run terraform destroy examples/complete
 terraform-destroy-minimal      Run terraform destroy examples/minimal
 terraform-plan-complete        Run terraform plan examples/complete
 terraform-plan-minimal         Run terraform plan examples/minimal
+upgrade                        Upgrade makefile
 ```
 
 ### Releasing new versions
