@@ -65,7 +65,7 @@ check-env:
 		$(call check_environment_variable,$${val}); \
 	done
 
-lint: lint-terraform validate-terraform lint-shellscript lint-markdown lint-yaml ## Lint code
+lint: lint-shellscript lint-markdown lint-yaml lint-terraform validate-terraform ## Lint code
 
 lint-terraform:
 	docker run --rm -v "$(CURDIR):/data" wata727/tflint
