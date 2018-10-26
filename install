@@ -21,7 +21,7 @@ sed -i "" -e "s/template-terraform-module/${REPO_NAME}/g" README.md
 sed -i "" -e "s/include terraform.mk/include .terraform.mk/g" Makefile
 
 # remove code without comment
-find . -type f -name '*.tf' -path "./*" -not -path "**/.terraform/*" | xargs -I {} sed -i "" -e "/^[^#]/d" -e "/^$/d" {}
+find . -type f -name '*.tf' -path "./*" -not -path "**/.terraform/*" -print0 | xargs -0 -I {} sed -i "" -e "/^[^#]/d" -e "/^$/d" {}
 
 git init
 git add .
