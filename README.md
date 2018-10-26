@@ -1,6 +1,7 @@
 # template-terraform-module
 
 [![CircleCI](https://circleci.com/gh/tmknom/template-terraform-module.svg?style=svg)](https://circleci.com/gh/tmknom/template-terraform-module)
+[![License](https://img.shields.io/github/license/tmknom/template-dockerfile.svg)](https://opensource.org/licenses/Apache-2.0)
 
 Terraform module template following [Standard Module Structure](https://www.terraform.io/docs/modules/create.html#standard-module-structure).
 
