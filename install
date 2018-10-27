@@ -12,8 +12,7 @@ REPO_NAME=${1:-terraform-provider-name}
 git clone --depth 1 https://github.com/tmknom/template-terraform-module.git "${REPO_NAME}"
 
 cd "${REPO_NAME}"
-rm -rf install .git
-mv terraform.mk .terraform.mk
+rm -rf terraform.mk install .git
 
 REGISTRY_PATH=$(echo "${REPO_NAME}" | awk -F- '{print substr($0, index($0, $3))"/"$2}')
 sed -i "" -e "s#name/provider#${REGISTRY_PATH}#g" README.md
@@ -26,6 +25,9 @@ find . -type f -name '*.tf' -path "./*" -not -path "**/.terraform/*" -print0 | x
 git init
 git add .
 git commit -m "Initial commit" -m "Based on https://github.com/tmknom/template-terraform-module"
+
+# Download .terraform.mk
+make
 
 set +x
 printf "\nInstall success, run command\n\n"

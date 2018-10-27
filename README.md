@@ -12,7 +12,7 @@ Named `terraform-<PROVIDER>-<NAME>`. Module repositories must use this three-par
 
 ```sh
 curl -fsSL https://raw.githubusercontent.com/tmknom/template-terraform-module/master/install | sh -s terraform-aws-sample
-cd terraform-aws-sample
+cd terraform-aws-sample && make install
 ```
 
 ## Examples
