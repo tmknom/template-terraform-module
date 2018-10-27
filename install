@@ -26,6 +26,9 @@ git init
 git add .
 git commit -m "Initial commit" -m "Based on https://github.com/tmknom/template-terraform-module"
 
+# Download .terraform.mk
+make
+
 set +x
 printf "\nInstall success, run command\n\n"
 printf "    \033[36mcd %s && make install\033[0m\n" "${REPO_NAME}"
