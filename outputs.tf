@@ -1,7 +1,3 @@
-# Output Configuration
-#
-# https://www.terraform.io/docs/configuration/outputs.html
-
 output "null_resource_id" {
   value       = "${null_resource.foo.id}"
   description = "An arbitrary value that changes each time the resource is replaced."
