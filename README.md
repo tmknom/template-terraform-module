@@ -53,6 +53,7 @@ make install
 ### Makefile targets
 
 ```text
+check-format                   Check format code
 clean                          Clean .terraform
 docs                           Generate docs
 format                         Format code
