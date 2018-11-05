@@ -102,6 +102,8 @@ format-shellscript:
 format-markdown:
 	docker run --rm -v "$(CURDIR):/work" tmknom/prettier --parser=markdown --write '**/*.md'
 
+check-format: check-format-terraform check-format-shellscript check-format-markdown ## Check format code
+
 check-format-terraform:
 	$(call terraform,.,fmt,-check=true)
 
