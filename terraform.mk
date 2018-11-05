@@ -105,6 +105,9 @@ format-markdown:
 check-format-terraform:
 	$(call terraform,.,fmt,-check=true)
 
+check-format-shellscript:
+	$(call list_shellscript) | xargs -I {} docker run --rm -v "$(CURDIR):/work" -w /work tmknom/shfmt -d -i 2 -ci -kp -w {}
+
 docs: ## Generate docs
 	docker run --rm -v "$(CURDIR):/work" tmknom/terraform-docs
 
