@@ -108,6 +108,9 @@ check-format-terraform:
 check-format-shellscript:
 	$(call list_shellscript) | xargs -I {} docker run --rm -v "$(CURDIR):/work" -w /work tmknom/shfmt -d -i 2 -ci -kp -w {}
 
+check-format-markdown:
+	docker run --rm -v "$(CURDIR):/work" tmknom/prettier --list-different --parser=markdown '**/*.md'
+
 docs: ## Generate docs
 	docker run --rm -v "$(CURDIR):/work" tmknom/terraform-docs
 
