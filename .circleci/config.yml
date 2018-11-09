@@ -9,5 +9,5 @@ jobs:
           name: Setup makefile
           command: make
       - run:
-          name: Invoked by continuous integration
+          name: Execute CI build
           command: make cibuild
