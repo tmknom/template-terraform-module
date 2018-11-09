@@ -9,11 +9,5 @@ jobs:
           name: Setup makefile
           command: make
       - run:
-          name: Install requirements
-          command: make install
-      - run:
-          name: Lint code
-          command: make lint
-      - run:
-          name: Check format code
-          command: make check-format
+          name: Invoked by continuous integration
+          command: make cibuild

@@ -113,6 +113,8 @@ check-format-shellscript:
 check-format-markdown:
 	docker run --rm -v "$(CURDIR):/work" tmknom/prettier --list-different --parser=markdown '**/*.md'
 
+cibuild: install lint check-format ## Invoked by continuous integration
+
 docs: ## Generate docs
 	docker run --rm -v "$(CURDIR):/work" tmknom/terraform-docs --sort-inputs-by-required --with-aggregate-type-defaults markdown .
 
