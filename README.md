@@ -54,6 +54,7 @@ make install
 
 ```text
 check-format                   Check format code
+cibuild                        Execute CI build
 clean                          Clean .terraform
 docs                           Generate docs
 format                         Format code
