@@ -114,7 +114,7 @@ check-format-markdown:
 	docker run --rm -v "$(CURDIR):/work" tmknom/prettier --list-different --parser=markdown '**/*.md'
 
 docs: ## Generate docs
-	docker run --rm -v "$(CURDIR):/work" tmknom/terraform-docs
+	docker run --rm -v "$(CURDIR):/work" tmknom/terraform-docs --sort-inputs-by-required --with-aggregate-type-defaults markdown .
 
 release: ## Release GitHub and Terraform Module Registry
 	version=$$(cat VERSION) && git tag "$${version}" && git push origin "$${version}"
