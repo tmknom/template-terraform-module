@@ -1,7 +1,7 @@
 # Usage - Define TERRAFORM_VERSION, and include this file as below.
 #
 # TERRAFORM_VERSION := latest
-# include terraform.mk
+# include Makefile.terraform
 
 .DEFAULT_GOAL := help
 
@@ -125,7 +125,7 @@ clean: ## Clean .terraform
 	rm -rf .terraform
 
 upgrade: ## Upgrade makefile
-	curl -sSL https://raw.githubusercontent.com/tmknom/template-terraform-module/master/terraform.mk -o .terraform.mk
+	curl -sSL https://raw.githubusercontent.com/tmknom/template-terraform-module/master/Makefile.terraform -o .Makefile.terraform
 
 # https://postd.cc/auto-documented-makefile/
 help: ## Show help
