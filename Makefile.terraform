@@ -121,6 +121,9 @@ docs: ## Generate docs
 release: ## Release GitHub and Terraform Module Registry
 	version=$$(cat VERSION) && git tag "$${version}" && git push origin "$${version}"
 
+diff: ## Word diff
+	git diff head --word-diff-regex=$$'[^\x80-\xbf][\x80-\xbf]*' --word-diff=color
+
 clean: ## Clean .terraform
 	rm -rf .terraform
 
