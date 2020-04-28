@@ -44,3 +44,13 @@ jobs:
           tf_actions_version: ${{ env.TERRAFORM_VERSION }}
           tf_actions_subcommand: validate
           tf_actions_working_dir: ${{ matrix.dir }}
+
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.1.0
+      - name: TFLint
+        run: docker run --rm -v ${PWD}:/data wata727/tflint
