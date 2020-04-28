@@ -1,0 +1,19 @@
+name: Terraform
+on:
+  pull_request:
+
+env:
+  TERRAFORM_VERSION: 0.11.14
+
+jobs:
+  format:
+    name: Format
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.1.0
+      - name: Format all
+        uses: hashicorp/terraform-github-actions@v0.8.0
+        with:
+          tf_actions_version: ${{ env.TERRAFORM_VERSION }}
+          tf_actions_subcommand: fmt
