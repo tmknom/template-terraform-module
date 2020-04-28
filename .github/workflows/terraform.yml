@@ -36,14 +36,14 @@ jobs:
         uses: hashicorp/terraform-github-actions@v0.8.0
         with:
           tf_actions_version: ${{ env.TERRAFORM_VERSION }}
-          tf_actions_subcommand: init
           tf_actions_working_dir: ${{ matrix.dir }}
+          tf_actions_subcommand: init
       - name: Validate
         uses: hashicorp/terraform-github-actions@v0.8.0
         with:
           tf_actions_version: ${{ env.TERRAFORM_VERSION }}
-          tf_actions_subcommand: validate
           tf_actions_working_dir: ${{ matrix.dir }}
+          tf_actions_subcommand: validate
 
   lint:
     name: Lint
