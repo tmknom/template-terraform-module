@@ -1,6 +1,10 @@
 # template-terraform-module
 
-[![CircleCI](https://circleci.com/gh/tmknom/template-terraform-module.svg?style=svg)](https://circleci.com/gh/tmknom/template-terraform-module)
+[![Terraform Actions Status](https://github.com/tmknom/template-terraform-module/workflows/Terraform/badge.svg)](https://github.com/tmknom/template-terraform-module/actions?query=workflow%3ATerraform)
+[![Shell Script Actions Status](https://github.com/tmknom/template-terraform-module/workflows/Shell%20Script/badge.svg)](https://github.com/tmknom/template-terraform-module/actions?query=workflow%3A%22Shell+Script%22)
+[![Markdown Actions Status](https://github.com/tmknom/template-terraform-module/workflows/Markdown/badge.svg)](https://github.com/tmknom/template-terraform-module/actions?query=workflow%3AMarkdown)
+[![YAML Actions Status](https://github.com/tmknom/template-terraform-module/workflows/YAML/badge.svg)](https://github.com/tmknom/template-terraform-module/actions?query=workflow%3AYAML)
+[![JSON Actions Status](https://github.com/tmknom/template-terraform-module/workflows/JSON/badge.svg)](https://github.com/tmknom/template-terraform-module/actions?query=workflow%3AJSON)
 [![GitHub tag](https://img.shields.io/github/tag/tmknom/template-terraform-module.svg)](https://registry.terraform.io/modules/tmknom/name/provider)
 [![License](https://img.shields.io/github/license/tmknom/template-terraform-module.svg)](https://opensource.org/licenses/Apache-2.0)
 
