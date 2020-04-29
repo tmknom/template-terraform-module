@@ -75,12 +75,7 @@ lint-terraform:
 validate-terraform: validate-terraform-module validate-terraform-examples
 
 validate-terraform-module:
-	if [ $$(echo $(TERRAFORM_VERSION) | grep '0.12') ] ; then \
-		$(call terraform,.,init); \
-		$(call terraform,.,validate); \
-	else \
-		$(call terraform,.,validate,-check-variables=false); \
-	fi
+	$(call terraform,.,init) && $(call terraform,.,validate)
 
 validate-terraform-examples:
 	@for dir in ${EXAMPLE_DIRS}; do \
