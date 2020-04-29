@@ -3,7 +3,7 @@ TERRAFORM_VERSION := 0.11.14
 -include Makefile.terraform
 
 .Makefile.terraform:
-	curl -sSL https://raw.githubusercontent.com/tmknom/template-terraform-module/0.1.0/Makefile.terraform -o .Makefile.terraform
+	curl -sSL https://raw.githubusercontent.com/tmknom/template-terraform-module/0.1.1/Makefile.terraform -o .Makefile.terraform
 
 MINIMAL_DIR := ./examples/minimal
 COMPLETE_DIR := ./examples/complete
