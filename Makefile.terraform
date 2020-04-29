@@ -13,7 +13,7 @@ TERRAFORM_IMAGE := hashicorp/terraform:${TERRAFORM_VERSION}
 ENVIRONMENT_VARIABLES := AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_DEFAULT_REGION
 
 LINTER_IMAGES := koalaman/shellcheck tmknom/markdownlint tmknom/yamllint
-FORMATTER_IMAGES := tmknom/shfmt tmknom/prettier
+FORMATTER_IMAGES := mvdan/shfmt tmknom/prettier
 TERRAFORM_IMAGES := ${TERRAFORM_IMAGE} wata727/tflint tmknom/terraform-docs
 DOCKER_IMAGES := ${LINTER_IMAGES} ${FORMATTER_IMAGES} ${TERRAFORM_IMAGES}
 
@@ -97,7 +97,7 @@ format-terraform:
 	$(call terraform,.,fmt)
 
 format-shellscript:
-	$(call list_shellscript) | xargs -I {} docker run --rm -v "$(CURDIR):/work" -w /work tmknom/shfmt -i 2 -ci -kp -w {}
+	$(call list_shellscript) | xargs -I {} docker run --rm -v "$(CURDIR):/work" -w /work mvdan/shfmt -i 2 -ci -kp -w {}
 
 format-markdown:
 	docker run --rm -v "$(CURDIR):/work" tmknom/prettier --parser=markdown --write '**/*.md'
