@@ -56,6 +56,7 @@ make install
 check-format                   Check format code
 cibuild                        Execute CI build
 clean                          Clean .terraform
+diff                           Word diff
 docs                           Generate docs
 format                         Format code
 help                           Show help
