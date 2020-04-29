@@ -25,4 +25,4 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2.1.0
       - name: shfmt
-        run: docker run --rm -v ${PWD}:/work -w /work mvdan/shfmt:v3.1.0-alpine -i 2 -ci -kp -d .
+        run: docker run --rm -v ${PWD}:/work -w /work mvdan/shfmt -i 2 -ci -kp -d .
