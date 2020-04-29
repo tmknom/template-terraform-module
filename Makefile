@@ -10,7 +10,7 @@ COMPLETE_DIR := ./examples/complete
 
 terraform-plan-minimal: ## Run terraform plan examples/minimal
 	$(call terraform,${MINIMAL_DIR},init)
-	$(call terraform,${MINIMAL_DIR},plan) | tee -a /dev/stderr | docker run --rm -i tmknom/terraform-landscape
+	$(call terraform,${MINIMAL_DIR},plan)
 
 terraform-apply-minimal: ## Run terraform apply examples/minimal
 	$(call terraform,${MINIMAL_DIR},apply)
@@ -20,7 +20,7 @@ terraform-destroy-minimal: ## Run terraform destroy examples/minimal
 
 terraform-plan-complete: ## Run terraform plan examples/complete
 	$(call terraform,${COMPLETE_DIR},init)
-	$(call terraform,${COMPLETE_DIR},plan) | tee -a /dev/stderr | docker run --rm -i tmknom/terraform-landscape
+	$(call terraform,${COMPLETE_DIR},plan)
 
 terraform-apply-complete: ## Run terraform apply examples/complete
 	$(call terraform,${COMPLETE_DIR},apply)

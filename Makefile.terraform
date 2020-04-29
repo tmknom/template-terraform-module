@@ -14,7 +14,7 @@ ENVIRONMENT_VARIABLES := AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_DEFAULT_REG
 
 LINTER_IMAGES := koalaman/shellcheck tmknom/markdownlint tmknom/yamllint
 FORMATTER_IMAGES := tmknom/shfmt tmknom/prettier
-TERRAFORM_IMAGES := ${TERRAFORM_IMAGE} wata727/tflint tmknom/terraform-docs tmknom/terraform-landscape
+TERRAFORM_IMAGES := ${TERRAFORM_IMAGE} wata727/tflint tmknom/terraform-docs
 DOCKER_IMAGES := ${LINTER_IMAGES} ${FORMATTER_IMAGES} ${TERRAFORM_IMAGES}
 
 EXAMPLE_DIRS := $(shell find . -type f -name '*.tf' -path "./examples/*" -not -path "**/.terraform/*" -exec dirname {} \; | sort -u)
