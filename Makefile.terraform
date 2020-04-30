@@ -10,6 +10,9 @@ SHELL := /bin/bash
 # This option causes make to display a warning whenever an undefined variable is expanded.
 MAKEFLAGS += --warn-undefined-variables
 
+# Disable any builtin pattern rules, then speedup a bit.
+MAKEFLAGS += --no-builtin-rules
+
 .DEFAULT_GOAL := help
 
 # https://gist.github.com/tadashi-aikawa/da73d277a3c1ec6767ed48d1335900f3
