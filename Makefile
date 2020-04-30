@@ -8,22 +8,22 @@ TERRAFORM_VERSION := 0.12.24
 MINIMAL_DIR := ./examples/minimal
 COMPLETE_DIR := ./examples/complete
 
-terraform-plan-minimal: ## Run terraform plan examples/minimal
+plan-minimal: ## Run terraform plan examples/minimal
 	$(call terraform,${MINIMAL_DIR},init)
 	$(call terraform,${MINIMAL_DIR},plan)
 
-terraform-apply-minimal: ## Run terraform apply examples/minimal
+apply-minimal: ## Run terraform apply examples/minimal
 	$(call terraform,${MINIMAL_DIR},apply)
 
-terraform-destroy-minimal: ## Run terraform destroy examples/minimal
+destroy-minimal: ## Run terraform destroy examples/minimal
 	$(call terraform,${MINIMAL_DIR},destroy)
 
-terraform-plan-complete: ## Run terraform plan examples/complete
+plan-complete: ## Run terraform plan examples/complete
 	$(call terraform,${COMPLETE_DIR},init)
 	$(call terraform,${COMPLETE_DIR},plan)
 
-terraform-apply-complete: ## Run terraform apply examples/complete
+apply-complete: ## Run terraform apply examples/complete
 	$(call terraform,${COMPLETE_DIR},apply)
 
-terraform-destroy-complete: ## Run terraform destroy examples/complete
+destroy-complete: ## Run terraform destroy examples/complete
 	$(call terraform,${COMPLETE_DIR},destroy)
