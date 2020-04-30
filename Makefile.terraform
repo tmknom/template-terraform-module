@@ -13,6 +13,9 @@ MAKEFLAGS += --warn-undefined-variables
 # Disable any builtin pattern rules, then speedup a bit.
 MAKEFLAGS += --no-builtin-rules
 
+# Disable any builtin suffix rules, then speedup a bit.
+.SUFFIXES:
+
 .DEFAULT_GOAL := help
 
 # https://gist.github.com/tadashi-aikawa/da73d277a3c1ec6767ed48d1335900f3
