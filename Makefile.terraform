@@ -3,6 +3,10 @@
 # TERRAFORM_VERSION := latest
 # include Makefile.terraform
 
+# If this variable is not set in your makefile, the program /bin/sh is used as the shell.
+# https://www.gnu.org/software/make/manual/html_node/Choosing-the-Shell.html
+SHELL := /bin/bash
+
 .DEFAULT_GOAL := help
 
 # https://gist.github.com/tadashi-aikawa/da73d277a3c1ec6767ed48d1335900f3
