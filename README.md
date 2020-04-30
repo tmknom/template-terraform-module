@@ -42,7 +42,7 @@ Write your Terraform module outputs.
 
 ## Development
 
-### Requirements
+### Development Requirements
 
 - [Docker](https://www.docker.com/)
 
