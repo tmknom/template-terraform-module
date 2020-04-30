@@ -149,7 +149,8 @@ clean: ## Clean .terraform
 	rm -rf .terraform
 
 upgrade: ## Upgrade makefile
-	curl -sSL https://raw.githubusercontent.com/tmknom/template-terraform-module/master/Makefile.terraform -o .Makefile.terraform
+	rm -rf .Makefile.terraform
+	$(MAKE)
 
 # https://postd.cc/auto-documented-makefile/
 help: ## Show help
