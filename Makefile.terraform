@@ -16,6 +16,15 @@ MAKEFLAGS += --no-builtin-rules
 # Disable any builtin suffix rules, then speedup a bit.
 .SUFFIXES:
 
+# The arguments passed to the shell are taken from the variable .SHELLFLAGS.
+#
+# The -e flag causes bash with qualifications to exit immediately if a command it executes fails.
+# The -u flag causes bash to exit with an error message if a variable is accessed without being defined.
+# The -o pipefail option causes bash to exit if any of the commands in a pipeline fail.
+# The -c flag is in the default value of .SHELLFLAGS and we must preserve it.
+# Because it is how make passes the script to be executed to bash.
+.SHELLFLAGS := -eu -o pipefail -c
+
 .DEFAULT_GOAL := help
 
 # https://gist.github.com/tadashi-aikawa/da73d277a3c1ec6767ed48d1335900f3
