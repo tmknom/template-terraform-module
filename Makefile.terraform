@@ -25,6 +25,7 @@ MAKEFLAGS += --no-builtin-rules
 # Because it is how make passes the script to be executed to bash.
 .SHELLFLAGS := -eu -o pipefail -c
 
+# Sets the default goal to be used if no targets were specified on the command line.
 .DEFAULT_GOAL := help
 
 # https://gist.github.com/tadashi-aikawa/da73d277a3c1ec6767ed48d1335900f3
