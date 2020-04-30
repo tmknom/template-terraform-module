@@ -12,13 +12,12 @@ REPO_NAME=${1:-terraform-provider-name}
 git clone --depth 1 https://github.com/tmknom/template-terraform-module.git "${REPO_NAME}"
 
 cd "${REPO_NAME}"
-rm -rf Makefile.terraform install .git
+rm -rf Makefile.terraform install .github/workflows/shellscript.yml .git
 
 REGISTRY_PATH=$(echo "${REPO_NAME}" | awk -F- '{print substr($0, index($0, $3))"/"$2}')
 sed -i "" -e "s#name/provider#${REGISTRY_PATH}#g" README.md
 sed -i "" -e "s/template-terraform-module/${REPO_NAME}/g" README.md
 sed -i "" -e "s/include Makefile.terraform/include .Makefile.terraform/g" Makefile
-sed -i "" -e "s/pattern: install/pattern: *.sh/g" .github/workflows/shellscript.yml
 sed -i "" -e "s/$(cat VERSION)/0.0.1/g" VERSION
 
 # File creation of a new line only
