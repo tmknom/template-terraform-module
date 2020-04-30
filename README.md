@@ -24,6 +24,14 @@ cd terraform-aws-sample && make install
 - [Minimal](https://github.com/tmknom/template-terraform-module/tree/master/examples/minimal)
 - [Complete](https://github.com/tmknom/template-terraform-module/tree/master/examples/complete)
 
+## Requirements
+
+Write your Terraform module requirements.
+
+## Providers
+
+Write your Terraform module providers.
+
 ## Inputs
 
 Write your Terraform module inputs.
