@@ -98,11 +98,11 @@ lint-terraform:
 validate-terraform: validate-terraform-module validate-terraform-examples
 
 validate-terraform-module:
-	$(call terraform,.,init) && $(call terraform,.,validate)
+	$(call terraform,.,init,) && $(call terraform,.,validate,)
 
 validate-terraform-examples:
 	@for dir in ${EXAMPLE_DIRS}; do \
-		$(call terraform,$${dir},init) && $(call terraform,$${dir},validate); \
+		$(call terraform,$${dir},init,) && $(call terraform,$${dir},validate,); \
 	done
 
 lint-shellscript:
