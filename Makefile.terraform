@@ -52,7 +52,7 @@ define terraform
 	sub_command="${2}" && \
 	option="${3}" && \
 	docker run --rm -i -v "$$PWD:/work" -w /work \
-	-v $$TF_PLUGIN_CACHE_DIR:/.terraform.d/plugin-cache \
+	-v $${TF_PLUGIN_CACHE_DIR:-/tmp/.terraform.d/plugin-cache}:/.terraform.d/plugin-cache \
 	-e TF_PLUGIN_CACHE_DIR=/.terraform.d/plugin-cache \
 	-e AWS_ACCESS_KEY_ID=$$AWS_ACCESS_KEY_ID \
 	-e AWS_SECRET_ACCESS_KEY=$$AWS_SECRET_ACCESS_KEY \
