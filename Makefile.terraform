@@ -152,7 +152,7 @@ diff: ## Word diff
 	git diff head --word-diff-regex=$$'[^\x80-\xbf][\x80-\xbf]*' --word-diff=color
 
 clean: ## Clean .terraform
-	rm -rf .terraform
+	find . -type d -name .terraform -prune -exec rm -rf {} \;
 
 upgrade: ## Upgrade makefile
 	rm -rf .Makefile.terraform
