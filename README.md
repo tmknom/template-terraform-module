@@ -1,4 +1,4 @@
-# template-terraform-module
+# terraform-template
 
 [![Terraform Actions Status](https://github.com/tmknom/template-terraform-module/workflows/Terraform/badge.svg)](https://github.com/tmknom/template-terraform-module/actions?query=workflow%3ATerraform)
 [![Shell Script Actions Status](https://github.com/tmknom/template-terraform-module/workflows/Shell%20Script/badge.svg)](https://github.com/tmknom/template-terraform-module/actions?query=workflow%3A%22Shell+Script%22)
